@@ -10,7 +10,7 @@
       <a class="nav-link mx-2 text-black" v-on:click="goCreate" >CREATE</a>  
      </nav>
      <div>
-       <Home v-if="page == 'home'" /> 
+       <Home v-if="page == 'home'" @gotoExercises="goExercises" /> 
        <Exercises v-if="page == 'exercises'" />
        <Create v-if="page == 'create'" />
      </div>

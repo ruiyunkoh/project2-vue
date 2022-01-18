@@ -3,8 +3,8 @@
     <div class="banner">
         <img alt="" src="../assets/banner.png">
         <div class="text">
-        <h1>Share & Shed</h1>
-        <p>A place to uncover exercise routine shared</p>
+        <h1 v-bind:style="styleObject">Share & Shed</h1>
+        <p>A place to uncover exercise routines shared</p>
         <p>by a community that prioritises wellness.</p>
         </div>
         <button type="button" class="btn btn-outline-light" v-on:click="findExercise">Find Exercises</button>
@@ -15,9 +15,16 @@
 <script>
 export default {
   name: 'Home',
+  data: function(){
+      return{
+      styleObject:{
+          fontSize:"60px"
+      }
+      }
+  },
   methods: {
       findExercise: function(){
-          this.$emit("goExercises")
+          this.$emit("gotoExercises")
       }
   }   
 }
