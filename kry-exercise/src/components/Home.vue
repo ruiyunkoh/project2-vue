@@ -4,8 +4,8 @@
         <img alt="" src="../assets/banner.png">
         <div class="text">
         <h1 v-bind:style="styleObject">Share & Shed</h1>
-        <p>A place to uncover exercise routines shared</p>
-        <p>by a community that prioritises wellness.</p>
+        <p>A place to uncover exercise routines shared<br>
+        by a community that prioritises wellness.</p>
         </div>
         <button type="button" class="btn btn-outline-light" v-on:click="findExercise">Find Exercises</button>
     </div>
@@ -58,7 +58,7 @@ export default {
     font-family: "Roboto Condensed", sans-serif;
 }
 .text>p{
-    line-height: 0.5;
+    line-height: 1;
     font-family: "Montserrat", sans-serif;
 }
 
