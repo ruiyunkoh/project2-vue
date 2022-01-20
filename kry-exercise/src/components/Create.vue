@@ -33,8 +33,8 @@
       </div>
       <div class="col-md-4">
         <label class="form-label">Target Area:</label>
-        <select v-model="target_area" class="form-select">
-          <option selected value="Whole Body">Whole Body</option>
+        <select v-model="targetArea" class="form-select">
+          <option selected value="Whole body">Whole Body</option>
           <option value="Upper body">Upper body</option>
           <option value="Legs">Legs</option>
           <option value="Butt">Butt</option>
@@ -47,7 +47,7 @@
       </div>
       <div class="col-md-2">
         <label class="form-label">Calories burnt:</label>
-        <input type="text" class="form-control" v-model="calories_burnt">
+        <input type="text" class="form-control" v-model="caloriesBurnt">
       </div>
       <div class="me-2">
         <label class="ms-1 me-2">Intensity:</label>
@@ -85,8 +85,8 @@ export default {
       routine: "",
       type: "",
       intensity: "",
-      "target_area": "",
-      "calories_burnt": "",
+      targetArea: "",
+      caloriesBurnt: "",
       tags: []
     };
   },
@@ -101,8 +101,8 @@ export default {
       routine: this.routine.split('!'),
       type: this.type,
       intensity: this.intensity,
-      target_area: this.target_area,
-      calories_burnt: this.calories_burnt,
+      targetArea: this.targetArea,
+      caloriesBurnt: this.caloriesBurnt,
       tags: this.tags
      });
      console.log(response.data);

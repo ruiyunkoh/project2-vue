@@ -33,8 +33,8 @@
       </div>
       <div class="col-md-4">
         <label class="form-label">Target Area:</label>
-        <select v-model="target_area" class="form-select">
-          <option selected value="Whole Body">Whole Body</option>
+        <select v-model="targetArea" class="form-select">
+          <option selected value="Whole body">Whole Body</option>
           <option value="Upper body">Upper body</option>
           <option value="Legs">Legs</option>
           <option value="Butt">Butt</option>
@@ -47,7 +47,7 @@
       </div>
       <div class="col-md-2">
         <label class="form-label">Calories burnt:</label>
-        <input type="text" class="form-control" v-model="calories_burnt">
+        <input type="text" class="form-control" v-model="caloriesBurnt">
       </div>
       <div class="me-2">
         <label class="ms-1 me-2">Intensity:</label>
@@ -78,7 +78,7 @@ export default {
  props: ["exerciseId"],
  data: function() {
      return {
-        poster: "",
+      poster: "",
       title: "",
       image: "",
       duration: "",
@@ -86,8 +86,8 @@ export default {
       routine: "",
       type: "",
       intensity: "",
-      "target_area": "",
-      "calories_burnt": "",
+      targetArea: "",
+      caloriesBurnt: "",
       tags: [] 
      };
  },
@@ -97,26 +97,27 @@ export default {
      this.title = response.data.title;
      this.image = response.data.image;
      this.duration = response.data.duration;
+     this.description = response.data.description;
      this.routine = response.data.routine;
      this.type = response.data.type;
      this.intensity = response.data.intensity;
-     this.target_area = response.data.target_area;
-     this.calories_burnt = response.data.calories_burnt;
+     this.targetArea = response.data.target_area;
+     this.caloriesBurnt = response.data.calories_burnt;
      this.tags = response.data.tags;
  },
  methods: {
    processUpdate: async function () {
      let response = await axios.put(API_URL + "/find_exercise/" + this.exerciseId, {
-       poster: this.poster,
+      poster: this.poster,
       title: this.title,
       image: this.image,
       duration: this.duration,
       description: this.description,
-      routine: this.routine.split('!'),
+      routine: this.routine.split(','),
       type: this.type,
       intensity: this.intensity,
-      target_area: this.target_area,
-      calories_burnt: this.calories_burnt,
+      targetArea: this.targetArea,
+      caloriesBurnt: this.caloriesBurnt,
       tags: this.tags
      });
      console.log(response.data);
