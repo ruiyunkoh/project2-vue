@@ -55,14 +55,14 @@
         <input type="radio" name ="intensity" value="Intermediate" v-model="intensity"> Intermediate
         <input type="radio" name ="intensity" value="Advanced" v-model="intensity"> Advanced
       </div>
-      <div class="tags-list ">
-        <label class="form-check-label ms-1 me-2">Tags:</label>
+      <div>
+        <label class="ms-1 me-2">Tags:</label>
         <div>
-        <input class="form-check-input ms-2" type="checkbox" value="No equipment required" v-model="tags"> No equipment required
-        <input class="form-check-input ms-2" type="checkbox" value="No jumping" v-model="tags"> No jumping
+        <input class="ms-2" type="checkbox" value="No equipment required" v-model="tags"> No equipment required
+        <input class="ms-2" type="checkbox" value="No jumping" v-model="tags"> No jumping
         </div>
       </div>
-      <button type="button" class="create-btn btn-outline-secondary col-1 my-3">Add</button>
+      <button v-on:click="addNew" type="button" class="create-btn btn-outline-secondary col-1 my-3">Add</button>
       
     </form>
   </div>
@@ -91,21 +91,22 @@ export default {
     };
   },
   methods: {
-   processAdd: async function () {
+   addNew: async function () {
      let response = await axios.post(API_URL + "/new_exercise", {
       poster: this.poster,
       title: this.title,
       image: this.image,
       duration: this.duration,
       description: this.description,
-      routine: this.routine,
+      routine: this.routine.split('!'),
       type: this.type,
       intensity: this.intensity,
-      "target_area": this.target_area,
-      "calories_burnt": this.calories_burnt,
+      target_area: this.target_area,
+      calories_burnt: this.calories_burnt,
       tags: this.tags
      });
      console.log(response.data);
+     this.$emit("new-exercise-created");
     },
  },
 };

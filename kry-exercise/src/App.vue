@@ -1,6 +1,7 @@
 <template>
   <div>
    <div class="container-fluid">
+    <div class="alert alert-success" v-if="status">{{ status }}</div>
      <nav class="nav sticky-top">
       <div id="exerciseLogo">
         <img alt="" src="./assets/logo.png">
@@ -12,7 +13,7 @@
      <div>
        <Home v-if="page == 'home'" @gotoExercises="goExercises" /> 
        <Exercises v-if="page == 'exercises'" />
-       <Create v-if="page == 'create'" />
+       <Create v-if="page == 'create'" v-on:new-exercise-created="newExerciseCreated"/>
      </div>
 
    </div>
@@ -37,13 +38,20 @@ export default {
  methods: {
    goHome: function() {
      this.page = "home";
+     this.status = "";
    },
    goExercises: function () {
      this.page = "exercises";
+     this.status = "";
    },
    goCreate: function () {
      this.page = "create";
+     this.status = "";
    },
+   newExerciseCreated: function() {
+     this.page ="exercises";
+     this.status = "New Exercise Routine added";
+   }
  },
 
 };
