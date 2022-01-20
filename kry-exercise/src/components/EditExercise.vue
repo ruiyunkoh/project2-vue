@@ -62,7 +62,7 @@
         <input class="ms-2" type="checkbox" value="No jumping" v-model="tags"> No jumping
         </div>
       </div>
-      <button v-on:click="processUpdate" type="button" class="create-btn btn-outline-secondary col-1 my-3">Update</button>
+      <button v-on:click="processUpdate" type="button" class="update-btn btn-outline-secondary col-1 my-3">Update</button>
       
     </form>
   </div>
@@ -107,7 +107,7 @@ export default {
  },
  methods: {
    processUpdate: async function () {
-     let response = await axios.put(API_URL + "/find_exercise/" + this.exerciseId, {
+     await axios.put(API_URL + "/find_exercise/" + this.exerciseId, {
       poster: this.poster,
       title: this.title,
       image: this.image,
@@ -116,11 +116,11 @@ export default {
       routine: this.routine.split(','),
       type: this.type,
       intensity: this.intensity,
-      targetArea: this.targetArea,
-      caloriesBurnt: this.caloriesBurnt,
+      target_area: this.targetArea,
+      calories_burnt: this.caloriesBurnt,
       tags: this.tags
      });
-     console.log(response.data);
+     
      this.$emit("exercise-updated");
    },
  },
