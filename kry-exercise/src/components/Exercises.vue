@@ -7,6 +7,10 @@
       <p class="card-text">{{x.description}}</p>
       <span class="badge bg-secondary me-2">{{x.tags[0]}}</span>
       <span class="badge bg-dark">{{x.tags[1]}}</span>
+      <div class="icons">
+        <font-awesome-icon class="edit-btn me-2" icon="edit" v-on:click="update(x._id)" />
+        <font-awesome-icon class="delete-btn" icon="trash" />
+      </div>
       <p class="card-text"><small class="text-muted">Shared by: {{x.poster}} </small></p>
     </div>
   </div>
@@ -28,6 +32,11 @@ export default {
   mounted: async function () {
     let response = await axios.get(API_URL + "/find_exercise");
     this.exerciseList = response.data;
+  },
+  methods: {
+    update: function (exerciseId) {
+      this.$emit("update-exercise", exerciseId);
+    },
   },
 };
 </script>
@@ -52,5 +61,9 @@ export default {
 }
 .card-title:hover{
   color: rgb(142,142,142)!important;
+}
+.icons{
+  display:flex;
+  justify-content: flex-end;
 }
 </style>

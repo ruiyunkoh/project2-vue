@@ -12,8 +12,9 @@
      </nav>
      <div>
        <Home v-if="page == 'home'" @gotoExercises="goExercises" /> 
-       <Exercises v-if="page == 'exercises'" />
+       <Exercises v-if="page == 'exercises'" v-on:update-exercise="updateExercise"/>
        <Create v-if="page == 'create'" v-on:new-exercise-created="newExerciseCreated"/>
+       <EditExercise v-if="page == 'edit'" v-bind:exerciseId="exerciseBeingEdited" v-on:exercise-updated="exerciseUpdated"/>
      </div>
 
    </div>
@@ -25,10 +26,12 @@
 import Home from "./components/Home";
 import Exercises from "./components/Exercises";
 import Create from "./components/Create";
+import EditExercise from "./components/EditExercise";
+
 export default {
   name: 'App',
   components:{
-    Home, Exercises, Create
+    Home, Exercises, Create, EditExercise
   },
   data:function(){
    return {
@@ -51,6 +54,15 @@ export default {
    newExerciseCreated: function() {
      this.page ="exercises";
      this.status = "New Exercise Routine added";
+   },
+   updateExercise: function (exerciseId) {
+     this.page = "edit",
+     this.status = "";
+     this.exerciseBeingEdited = exerciseId;
+   },
+   exerciseUpdated: function (){
+     this.page = "exercises";
+     this.status = "Exercise Routine updated";
    }
  },
 
