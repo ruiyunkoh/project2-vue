@@ -101,8 +101,8 @@ export default {
      this.routine = response.data.routine;
      this.type = response.data.type;
      this.intensity = response.data.intensity;
-     this.targetArea = response.data.target_area;
-     this.caloriesBurnt = response.data.calories_burnt;
+     this.targetArea = response.data.targetArea;
+     this.caloriesBurnt = response.data.caloriesBurnt;
      this.tags = response.data.tags;
  },
  methods: {
@@ -113,11 +113,11 @@ export default {
       image: this.image,
       duration: this.duration,
       description: this.description,
-      routine: this.routine.split(','),
+      routine: this.routine.toString().split(','),
       type: this.type,
       intensity: this.intensity,
-      target_area: this.targetArea,
-      calories_burnt: this.caloriesBurnt,
+      targetArea: this.targetArea,
+      caloriesBurnt: this.caloriesBurnt,
       tags: this.tags
      });
      

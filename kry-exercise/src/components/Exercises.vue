@@ -9,7 +9,7 @@
       <span class="badge bg-dark">{{x.tags[1]}}</span>
       <div class="icons">
         <font-awesome-icon class="edit-btn me-2" icon="edit" v-on:click="update(x._id)" />
-        <font-awesome-icon class="delete-btn" icon="trash" />
+        <font-awesome-icon class="delete-btn" icon="trash" v-on:click="deleteExercise(x._id)"/>
       </div>
       <p class="card-text"><small class="text-muted">Shared by: {{x.poster}} </small></p>
     </div>
@@ -36,6 +36,11 @@ export default {
   methods: {
     update: function (exerciseId) {
       this.$emit("update-exercise", exerciseId);
+    },
+    deleteExercise: async function(Id){
+      let response = await axios.delete(API_URL + "/find_exercise/" + Id); 
+      // this.$emit("delete-exercise");
+      console.log(response.data);
     },
   },
 };
