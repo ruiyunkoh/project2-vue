@@ -12,7 +12,7 @@
      </nav>
      <div>
        <Home v-if="page == 'home'" @gotoExercises="goExercises" /> 
-       <Exercises v-if="page == 'exercises'" v-on:update-exercise="updateExercise"/>
+       <Exercises v-if="page == 'exercises'" v-on:update-exercise="updateExercise" v-on:delete-exercise="exerciseDeleted"/>
        <Create v-if="page == 'create'" v-on:new-exercise-created="newExerciseCreated"/>
        <EditExercise v-if="page == 'edit'" v-bind:exerciseId="exerciseBeingEdited" v-on:exercise-updated="exerciseUpdated"/>
      </div>
@@ -63,7 +63,12 @@ export default {
    exerciseUpdated: function (){
      this.page = "exercises";
      this.status = "Exercise Routine updated";
-   }
+   }, 
+   exerciseDeleted: function (){
+     window.location.reload();
+     this.page = "exercises";
+     this.status = "Exercise routine deleted";
+   },
  },
 
 };

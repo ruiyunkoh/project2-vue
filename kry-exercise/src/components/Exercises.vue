@@ -39,7 +39,7 @@ export default {
     },
     deleteExercise: async function(Id){
       let response = await axios.delete(API_URL + "/find_exercise/" + Id); 
-      // this.$emit("delete-exercise");
+      this.$emit("delete-exercise");
       console.log(response.data);
     },
   },
