@@ -1,5 +1,8 @@
 <template>
 <div class="exercise-holder row">
+  <div>
+    <SearchExercise v-if="page == 'exercises'" />
+  </div>
   <div class="card m-3" v-for="x in exerciseList" v-bind:key="x._id">
     <img v-bind:src="x.image" class="card-img-top" alt="">
     <div class="card-body">
@@ -19,14 +22,19 @@
 
 <script>
 import axios from "axios";
+import SearchExercise from "./SearchExercise";
 
 const API_URL = "https://kry-exercise.herokuapp.com";
 
 export default {
   name: 'Exercises',
+  components:{
+    SearchExercise
+  },
   data: function() {
     return{
       exerciseList: [],
+      'page':'exercises'
     };
   },
   mounted: async function () {

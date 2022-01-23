@@ -65,7 +65,7 @@ export default {
      this.status = "Exercise Routine updated";
    }, 
    exerciseDeleted: function (){
-     window.location.reload();
+    //  window.location.reload();
      this.page = "exercises";
      this.status = "Exercise routine deleted";
    },
