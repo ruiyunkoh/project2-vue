@@ -1,7 +1,7 @@
 <template>
 <div class="exercise-holder row">
   <div>
-    <SearchExercise v-if="page == 'exercises'" />
+    <SearchExercise v-if="page == 'exercises'" v-on:search-start="searchExercise" />
   </div>
   <div class="card m-3" v-for="x in exerciseList" v-bind:key="x._id">
     <img v-bind:src="x.image" class="card-img-top" alt="">
@@ -34,7 +34,10 @@ export default {
   data: function() {
     return{
       exerciseList: [],
-      'page':'exercises'
+      'page':'exercises',
+      'title': null,
+      'type':null,
+      'intensity': null,
     };
   },
   mounted: async function () {
@@ -50,6 +53,11 @@ export default {
       this.$emit("delete-exercise");
       console.log(response.data);
     },
+    searchExercise: async function () {
+      let response = await axios.get(API_URL + "/find_exercise?title=" + this.title);
+      this.exerciseList = response.data;
+      
+    }
   },
 };
 </script>

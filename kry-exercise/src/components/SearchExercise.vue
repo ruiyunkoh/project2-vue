@@ -23,7 +23,7 @@
         </select>
       </div>      
       <div class="col-2 pt-4">
-        <button type="submit" class="searchbtn btn-sm btn-outline-secondary">Search</button>
+        <button v-on:click="search" type="submit" class="searchbtn btn-sm btn-outline-secondary">Search</button>
       </div>
     </form>
   </div>
@@ -32,6 +32,18 @@
 <script>
 export default {
   name: "SearchExercise",
+  data: function() {
+      return {
+          title: "",
+          type: "",
+          intensity: ""
+      };
+  },
+  methods:{
+      search: function() {
+          this.$emit("search-start")
+      }
+  },
 };
 </script>
 
