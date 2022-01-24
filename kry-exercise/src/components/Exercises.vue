@@ -1,9 +1,35 @@
 <template>
 <div class="exercise-holder row">
-  <div>
-    <SearchExercise v-if="page == 'exercises'" v-on:search-start="searchExercise" />
-  </div>
-  <div class="card m-3" v-for="x in exerciseList" v-bind:key="x._id">
+  <form class="row g-3">      
+      <div class="col-md-4">
+        <label> Select type: </label>        
+        <select class="form-select" v-model="type">          
+          <option value="HIIT">HIIT</option>
+          <option value="Cardio">Cardio</option>
+          <option value="Stretching">Stretching</option>
+          <option value="Yoga/Pilates">Yoga/Pilates</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label>Select Intensity: </label>
+        <select class="form-select" v-model="intensity">          
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label> Select Target Area: </label>        
+        <select class="form-select" v-model="targetArea">          
+          <option value="Whole body">Whole Body</option>
+          <option value="Upper body">Upper Body</option>
+          <option value="Legs">Legs</option>
+          <option value="Abs">Abs</option>
+        </select>
+      </div>
+    </form>
+  <p> Total of {{totalResults}} results displayed </p> 
+  <div class="card m-3" v-for="x in filteredExercises" v-bind:key="x._id">
     <img v-bind:src="x.image" class="card-img-top" alt="">
     <div class="card-body">
       <a class="card-title text-black">{{x.title}}</a>
@@ -22,22 +48,18 @@
 
 <script>
 import axios from "axios";
-import SearchExercise from "./SearchExercise";
 
 const API_URL = "https://kry-exercise.herokuapp.com";
 
 export default {
   name: 'Exercises',
-  components:{
-    SearchExercise
-  },
+  
   data: function() {
     return{
-      exerciseList: [],
-      'page':'exercises',
-      'title': null,
-      'type':null,
-      'intensity': null,
+      exerciseList: [],      
+      targetArea: '',
+      type:'',
+      intensity: '',
     };
   },
   mounted: async function () {
@@ -53,12 +75,26 @@ export default {
       this.$emit("delete-exercise");
       console.log(response.data);
     },
-    searchExercise: async function () {
-      let response = await axios.get(API_URL + "/find_exercise?title=" + this.title);
-      this.exerciseList = response.data;
-      
-    }
+    
   },
+  computed: {
+    filteredExercises: function() {
+      let filtered = this.exerciseList.filter((eachExercise)=>{
+        return eachExercise.targetArea.includes(this.targetArea)
+      });
+      filtered = filtered.filter((eachExercise)=>{
+        return eachExercise.type.includes(this.type)
+      });
+      filtered = filtered.filter((eachExercise)=>{
+        return eachExercise.intensity.includes(this.intensity)
+      });
+      return filtered;
+    },
+    totalResults: function() {
+      return this.filteredExercises.length
+      }
+    
+  }
 };
 </script>
 
@@ -67,6 +103,10 @@ export default {
 .exercise-holder{
   display: flex;
   justify-content: center;
+}
+.exercise-holder>p{
+  margin-top: 10px;
+  text-align: center;
 }
 .card {
   max-width: 800px !important;
