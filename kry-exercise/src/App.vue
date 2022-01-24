@@ -12,9 +12,10 @@
      </nav>
      <div>
        <Home v-if="page == 'home'" @gotoExercises="goExercises" /> 
-       <Exercises v-if="page == 'exercises'" v-on:update-exercise="updateExercise" v-on:delete-exercise="exerciseDeleted"/>
+       <Exercises v-if="page == 'exercises'" v-on:update-exercise="updateExercise" v-on:delete-exercise="exerciseDeleted" v-on:selected-exercise="exerciseSelected" />
        <Create v-if="page == 'create'" v-on:new-exercise-created="newExerciseCreated"/>
        <EditExercise v-if="page == 'edit'" v-bind:exerciseId="exerciseBeingEdited" v-on:exercise-updated="exerciseUpdated"/>
+       <SelectedExercise v-if="page == 'select'" v-bind:exerciseId="exerciseIsSelected" />
      </div>
 
    </div>
@@ -27,11 +28,12 @@ import Home from "./components/Home";
 import Exercises from "./components/Exercises";
 import Create from "./components/Create";
 import EditExercise from "./components/EditExercise";
+import SelectedExercise from "./components/SelectedExercise";
 
 export default {
   name: 'App',
   components:{
-    Home, Exercises, Create, EditExercise
+    Home, Exercises, Create, EditExercise, SelectedExercise
   },
   data:function(){
    return {
@@ -69,6 +71,11 @@ export default {
      this.page = "exercises";
      this.status = "Exercise routine deleted";
    },
+   exerciseSelected: function(exerciseId) {
+     this.page = "select";
+     this.exerciseIsSelected = exerciseId;
+     this.status = "";
+   }
  },
 
 };

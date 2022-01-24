@@ -32,7 +32,7 @@
   <div class="card m-3" v-for="x in filteredExercises" v-bind:key="x._id">
     <img v-bind:src="x.image" class="card-img-top" alt="">
     <div class="card-body">
-      <a class="card-title text-black">{{x.title}}</a>
+      <a class="card-title text-black" v-on:click="selected(x._id)">{{x.title}}</a>
       <p class="card-text">{{x.description}}</p>
       <span class="badge bg-secondary me-2">{{x.tags[0]}}</span>
       <span class="badge bg-dark">{{x.tags[1]}}</span>
@@ -69,6 +69,9 @@ export default {
   methods: {
     update: function (exerciseId) {
       this.$emit("update-exercise", exerciseId);
+    },
+    selected: function (exerciseId) {
+      this.$emit("selected-exercise", exerciseId);
     },
     deleteExercise: async function(Id){
       let response = await axios.delete(API_URL + "/find_exercise/" + Id); 
