@@ -1,6 +1,6 @@
 <template>
 <div class="selected-holder">
-  <div class="card m-3">    
+  <div class="card m-3"  v-if="exerciseItem !== null">    
     <div class="card-body">
       <h1 class="cardselected-title text-black">{{exerciseItem.title}}</h1>
       <p class="card-text">{{exerciseItem.description}}</p>
@@ -35,7 +35,7 @@ export default {
   props: ["exerciseId"],
   data: function(){
       return {
-          exerciseItem: [],
+          exerciseItem: null,
       };
   },
   mounted: async function() {
