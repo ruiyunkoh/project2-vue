@@ -1,6 +1,6 @@
 <template>
   <div class="create-holder row">
-    <h1>Share your routine!</h1>
+    <h1>Share your routine!</h1>    
     <form class="row g-3 mt-3">
       <div class="col-md-8">
         <label class="form-label">Title:</label>
@@ -62,6 +62,7 @@
         <input class="ms-2" type="checkbox" value="No jumping" v-model="tags"> No jumping
         </div>
       </div>
+      <p class="text-danger" v-if="errors.length"><b>! Please ensure all fields are filled</b></p>
       <button v-on:click="addNew" type="button" class="create-btn btn-outline-secondary col-1 my-3">Add</button>
       
     </form>
@@ -87,11 +88,17 @@ export default {
       intensity: "",
       targetArea: "",
       caloriesBurnt: "",
-      tags: []
+      tags: [],
+      errors: []
     };
   },
   methods: {
    addNew: async function () {
+     this.errors = [];
+     if (!this.poster || !this.title || !this.duration || !this.description || !this.routine || !this.type || !this.intensity || !this.targetArea || !this.caloriesBurnt) {
+       this.errors.push("Field required");
+     }
+     else {
      let response = await axios.post(API_URL + "/new_exercise", {
       poster: this.poster,
       title: this.title,
@@ -106,7 +113,7 @@ export default {
       tags: this.tags
      });
      console.log(response.data);
-     this.$emit("new-exercise-created");
+     this.$emit("new-exercise-created")}
     },
  },
 };
@@ -122,8 +129,7 @@ export default {
 }
 .create-holder{
   display: flex;
-  justify-content: center;
-  
+  justify-content: center;  
 }
 form {
   max-width: 800px !important;

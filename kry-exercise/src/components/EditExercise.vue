@@ -62,7 +62,8 @@
         <input class="ms-2" type="checkbox" value="No jumping" v-model="tags"> No jumping
         </div>
       </div>
-      <button v-on:click="processUpdate" type="button" class="update-btn btn-outline-secondary col-1 my-3">Update</button>
+      <p class="text-danger" v-if="errors.length"><b>! Please ensure all fields are filled</b></p>
+      <button v-on:click="processUpdate" type="button" class="update-btn btn-outline-secondary col-1 my-3">Done</button>
       
     </form>
   </div>
@@ -88,7 +89,8 @@ export default {
       intensity: "",
       targetArea: "",
       caloriesBurnt: "",
-      tags: [] 
+      tags: [],
+      errors: [] 
      };
  },
  mounted: async function (){
@@ -107,6 +109,11 @@ export default {
  },
  methods: {
    processUpdate: async function () {
+     this.errors = [];
+     if (!this.poster || !this.title || !this.duration || !this.description || !this.routine || !this.type || !this.intensity || !this.targetArea || !this.caloriesBurnt) {
+       this.errors.push("Field required");
+     }
+     else {
      await axios.put(API_URL + "/find_exercise/" + this.exerciseId, {
       poster: this.poster,
       title: this.title,
@@ -121,7 +128,7 @@ export default {
       tags: this.tags
      });
      
-     this.$emit("exercise-updated");
+     this.$emit("exercise-updated")}
    },
  },
 };
