@@ -76,10 +76,8 @@ export default {
     selected: function (exerciseId) {
       this.$emit("selected-exercise", exerciseId);
     },
-    deleteExercise: async function(Id){
-      let response = await axios.delete(API_URL + "/find_exercise/" + Id); 
-      this.$emit("delete-exercise");
-      console.log(response.data);
+    deleteExercise: function(exerciseId){      
+      this.$emit("delete-exercise", exerciseId);      
     },
     
   },

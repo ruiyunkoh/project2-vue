@@ -12,10 +12,11 @@
      </nav>
      <div>
        <Home v-if="page == 'home'" @gotoExercises="goExercises" /> 
-       <Exercises v-if="page == 'exercises'" v-on:update-exercise="updateExercise" v-on:delete-exercise="exerciseDeleted" v-on:selected-exercise="exerciseSelected" />
+       <Exercises v-if="page == 'exercises'" v-on:update-exercise="updateExercise" v-on:delete-exercise="confirmDelete" v-on:selected-exercise="exerciseSelected" />
        <Create v-if="page == 'create'" v-on:new-exercise-created="newExerciseCreated"/>
        <EditExercise v-if="page == 'edit'" v-bind:exerciseId="exerciseBeingEdited" v-on:exercise-updated="exerciseUpdated"/>
        <SelectedExercise v-if="page == 'select'" v-bind:exerciseId="exerciseIsSelected" />
+       <DeleteExercise v-if="page == 'delete'" v-bind:exerciseId="exerciseBeingDeleted" v-on:exercise-deleted="exerciseDeleted" v-on:cancel-exercise="goExercises"/>
      </div>
 
    </div>
@@ -29,11 +30,12 @@ import Exercises from "./components/Exercises";
 import Create from "./components/Create";
 import EditExercise from "./components/EditExercise";
 import SelectedExercise from "./components/SelectedExercise";
+import DeleteExercise from "./components/DeleteExercise";
 
 export default {
   name: 'App',
   components:{
-    Home, Exercises, Create, EditExercise, SelectedExercise
+    Home, Exercises, Create, EditExercise, SelectedExercise, DeleteExercise
   },
   data:function(){
    return {
@@ -58,16 +60,20 @@ export default {
      this.status = "New Exercise Routine added";
    },
    updateExercise: function (exerciseId) {
-     this.page = "edit",
+     this.page = "edit";
      this.status = "";
      this.exerciseBeingEdited = exerciseId;
    },
    exerciseUpdated: function (){
      this.page = "exercises";
      this.status = "Exercise Routine updated";
+   },
+   confirmDelete: function(exerciseId) {
+     this.page = "delete";
+     this.status = "";
+     this.exerciseBeingDeleted = exerciseId;
    }, 
-   exerciseDeleted: function (){
-    //  window.location.reload();
+   exerciseDeleted: function (){    
      this.page = "exercises";
      this.status = "Exercise routine deleted";
    },
