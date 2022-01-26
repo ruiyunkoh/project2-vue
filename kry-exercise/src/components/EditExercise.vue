@@ -19,7 +19,7 @@
         <input type="text" class="form-control" v-model="description">
       </div>
       <div class="mb-3">
-        <label class="form-label">Routine:</label>
+        <label class="form-label">Exercise Moves:</label>
         <textarea class="form-control" v-model="routine" rows="3"></textarea>
       </div>      
       <div class="col-md-4">

@@ -19,7 +19,7 @@
         <input type="text" class="form-control" v-model="description" placeholder="Enter short description of your routine">
       </div>
       <div class="mb-3">
-        <label class="form-label">Routine:</label>
+        <label class="form-label">Exercise Moves:</label>
         <textarea class="form-control" v-model="routine" rows="3" placeholder="Separate each move by an exclamation mark"></textarea>
       </div>      
       <div class="col-md-4">
