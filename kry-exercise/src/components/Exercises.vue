@@ -3,7 +3,8 @@
   <form class="row g-3">      
       <div class="col-md-4">
         <label> Select type: </label>        
-        <select class="form-select" v-model="type">          
+        <select class="form-select" v-model="type">
+          <option value="">Select type</option>          
           <option value="HIIT">HIIT</option>
           <option value="Cardio">Cardio</option>
           <option value="Stretching">Stretching</option>
@@ -12,7 +13,8 @@
       </div>
       <div class="col-md-4">
         <label>Select Intensity: </label>
-        <select class="form-select" v-model="intensity">          
+        <select class="form-select" v-model="intensity">
+          <option value="">Select intensity</option>          
           <option value="Beginner">Beginner</option>
           <option value="Intermediate">Intermediate</option>
           <option value="Advanced">Advanced</option>
@@ -20,7 +22,8 @@
       </div>
       <div class="col-md-4">
         <label> Select Target Area: </label>        
-        <select class="form-select" v-model="targetArea">          
+        <select class="form-select" v-model="targetArea">
+          <option value="">Select target area</option>          
           <option value="Whole body">Whole Body</option>
           <option value="Upper body">Upper Body</option>
           <option value="Legs">Legs</option>

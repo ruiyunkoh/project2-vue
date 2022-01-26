@@ -1,14 +1,15 @@
 <template>
 <div class="selected-holder">
-    <div class="card m-3">    
+  <div class="card m-3">    
     <div class="card-body">
-      <h2 class="cardselected-title text-black">{{exerciseItem.title}}</h2>
+      <h5 class="cardselected-title text-black">{{exerciseItem.title}}</h5>
       <p class="card-text">{{exerciseItem.description}}</p>
       <span class="badge bg-secondary me-2">{{exerciseItem.tags[0]}}</span>
       <span class="badge bg-dark">{{exerciseItem.tags[1]}}</span>      
       <p class="card-text"><small class="text-muted">Shared by: {{exerciseItem.poster}} </small></p>
     </div>
     <img v-bind:src="exerciseItem.image" class="card-img-top" alt="">
+    
   </div>
 </div>
 </template>
