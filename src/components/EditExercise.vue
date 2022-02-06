@@ -118,13 +118,13 @@ export default {
       poster: this.poster,
       title: this.title,
       image: this.image,
-      duration: this.duration,
+      duration: parseInt(this.duration),
       description: this.description,
       routine: this.routine.toString().split(','),
       type: this.type,
       intensity: this.intensity,
       targetArea: this.targetArea,
-      caloriesBurnt: this.caloriesBurnt,
+      caloriesBurnt: parseInt(this.caloriesBurnt),
       tags: this.tags
      });
      
