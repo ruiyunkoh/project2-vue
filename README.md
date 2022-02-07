@@ -112,4 +112,4 @@ The whole website features muted colours, with a slight darker undertone. The co
  
  ## Technology
  <li> <a href="https://fontawesome.com/v5.15/icons"> FontAwesome </a></li> 
- <li> <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/">Bootsrap</a></li>
+ <li> <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/">Bootstrap</a></li>
