@@ -31,7 +31,7 @@ User goal: To find exercise routine that fits their criteria (which they can fil
   The main feature of the front-end application of this project is the 'Exercise' page that displays all exercise postings. <br>
   The webpage is best viewed using computer or an iPad. <br>
   <li> Surface: The visual design of the Home page (the page which users first see when they enter website) displays an attention grabbing banner that take up the full view size. <br>
-The whole website features muted colours, with a slight darker undertone. The colour scheme conveys simplicity and its darker undertone gives a hint of motivation and power to users. Colours were well chosen to ensure readability and colours are not clashing to cause mental stress.</li>
+The whole website features muted colours, with a slight darker undertone. The colour scheme conveys simplicity and its darker undertone gives a hint of motivation and power to users to get them started on the fitness regime. Colours were well chosen to ensure readability and colours are not clashing to cause distress.</li>
   <li> Skeleton: For ease of navigating through the webpage, the Navbar being used as the main navigator. </li>
   <li> Structure: Each posting is contained within a card format. Within each card shows user a brief content summary of the exercise. They are able to click to view more. </li>
   
