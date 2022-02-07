@@ -28,8 +28,8 @@ User goal: To find exercise routine that fits their criteria (which they can fil
   c. The website ensures that all creation/updating of forms has every field filled in before submission - such that relevant search fields are filled for categorisation. 
  
   ### 2.1.3 Wireframe and Five Planes of UI/UX
-  The main feature of the front-end application of this project is the 'Exercise' page that displays all exercise postings. 
-  
+  The main feature of the front-end application of this project is the 'Exercise' page that displays all exercise postings. <br>
+  The webpage is best viewed using computer or an iPad. <br>
   <li> Surface: The visual design of the Home page (the page which users first see when they enter website) displays an attention grabbing banner that take up the full view size. <br>
 The whole website features muted colours, with a slight darker undertone. The colour scheme conveys simplicity and its darker undertone gives a hint of motivation and power to users. Colours were well chosen to ensure readability and colours are not clashing to cause mental stress.</li>
   <li> Skeleton: For ease of navigating through the webpage, the Navbar being used as the main navigator. </li>
@@ -37,16 +37,32 @@ The whole website features muted colours, with a slight darker undertone. The co
   
   A rough sketch for the layout of the website was done during the planning stage. Subsequently, changes were slowly made to eventually evolve into the current website. <br>
   You may find the planning stage wireframe here: [wireframe pdf](/uiux-files)
-  
-  ### Exercise page 
- 
+    
  ## 2.2 Features
  
+  <li> The website is created on a Single Page Application </li>
+  <li> The main feature of this webpage would be the exercise page - which displays all exercises posted. (Fig 2) </li>
+  <li> The exercise page has a search function - for users to filter out postings that meet their criteria. (Fig 3) </li>
+  <li> Every posting is featured within a card format, with its information summarised. Each card has its own Edit and Delete buttons. (Fig 4) </li>
+  <li> Users can create posting by selecting the 'Create' tab in the navbar. A posting creation form will appear. (Fig 5) Form validation exists to ensure all fields are filled in before the form is successfully submitted. Upon successful submission, users are redirected back to 'Exercise' page, with an alert to inform on the submission. </li>
+  <li> Users can edit individual postings by selecting the edit icon within the card. This brings users to a form page (with all existing fields filled up) (Fig 6). Form validation exists to ensure all fields are filled in before the form is successfully submitted. Upon successful Edit, users are redirected back to 'Exercise' page, with an alert to inform on the Edit.</li>
+  <li> Users can click on the title of individual posting to be redirected to a page showing detailed exercise information (such as the routine, calories details, etc). (Fig 7)</li>
+  <li> Users can delete individual postings by selecting the delete icon within the card. This brings users to a confirmation page (Fig 8) to prevent accidental deletion. Upon successful Deletion, users are redirected back to 'Exercise' page, with an alert to inform on the Deletion. Cancellation of this process will also redirect users back to the exercise page. </li>
+  
+  <li> Although not yet implemented, a feature that was in consideration was a user authentication feature. This feature ensures users to log in first, before they are allowed to post, edit or delete. </li>
+  
+  
+  You may find the referenced features here: [features pdf](/uiux-files)
+  
  *Note: If results do not show on the 'Exercise' page on loading, kindly click refresh. 
  
 # 3. Implementation
 
  ## 3.1 Technology used
+ <li> Vue 2, JavaScript, MongoDB and Express </li>
+ <li> Gitpod </li>
+ <li> <a href="https://github.com/axios/axios">AXIOS</a></li>
+ <li> Heroku and Netlify </li>
  
  ## 3.2 Testing
  
