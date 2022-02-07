@@ -35,8 +35,8 @@ The whole website features muted colours, with a slight darker undertone. The co
   <li> Skeleton: For ease of navigating through the webpage, the Navbar being used as the main navigator. </li>
   <li> Structure: Each posting is contained within a card format. Within each card shows user a brief content summary of the exercise. They are able to click to view more. </li>
   
-  A rough sketch for the layout of the website was done during the planning stage. Subsequently, changes were slowly made to eventually evolve into the current website. 
-  You may find the planning stage wireframe here: uiux-files/wireframe.pdf.pdf
+  A rough sketch for the layout of the website was done during the planning stage. Subsequently, changes were slowly made to eventually evolve into the current website. <br>
+  You may find the planning stage wireframe here: [wireframe pdf] (/uiux-files)
   
   ### Exercise page 
  
