@@ -63,8 +63,21 @@ The whole website features muted colours, with a slight darker undertone. The co
  <li> Gitpod </li>
  <li> <a href="https://github.com/axios/axios">AXIOS</a></li>
  <li> Heroku and Netlify </li>
+ <li> Node JS, Yarn </li>
  
  ## 3.2 Testing
+ 
+ | Test Case #  | Test Case Description  | Test steps | Expected Result       |
+ | :------------|:---------------------- |:---------- |:--------------------- |
+ |1 | To check that Navbar Links work | Clicking on Navlinks to ensure redirecting to section works | Redirecting to each page works when each Navlink is clicked |
+ |2 | To check that all exercise posts are loaded | Clicking on either 'exercises' on Navlink or 'Find Exercises' button on home page. | Redirected to exercise page, displaying all default documents that were created in MongoDB |
+ |3 | To check that filtering works | 1. Selecting an option in all 3 filter fields. <br> 2. Selecting an option in some filter while leaving the remaining unselected   | Number of displayed cards reduces - showing only postings that matches filter criteria. Display should be none if there are no postings that matches filter criteria. |
+ |4 | Testing of filtering results | 1. Selecting an option in all 3 filter fields. <br> 2. Selecting an option in some filter while leaving the remaining unselected   | Display should show "Total of X results displayed". This number should tally with actual number of postings shown. |
+ |5 | Testing of creation of new posting | 1. Fill up all fields <br> 2. Leave some fields blank | 1. Users are redirected back to 'Exercise' page, with an alert to inform on the successful submission. A new posting should appear on both the restful API and Mongo Atlas. <br> 2. An error message should appear to alert users to fill up all required fields. |
+ |6 | Testing of editing a posting | 1. Fill up fields that users wishes to amend <br> 2. Leave some fields blank | 1. Users are redirected back to 'Exercise' page, with an alert to inform on the successful Edit. The edited values should appear on both the restful API and Mongo Atlas. <br> 2. An error message should appear to alert users to fill up all required fields. | 
+ |7 | Testing of deletion | 1. Confirm button is selected <br> 2. Cancel button is selected | 1. Users are redirected back to 'Exercise' page, with an alert to inform the successful Deletion. The deleted post should disappear from both the restful API and Mongo Atlas. <br> 2. Cancellation of this process will redirect users back to the exercise page, without any changes. |
+ 
+ 
  
 # 4. Deployment
   
@@ -97,3 +110,6 @@ The whole website features muted colours, with a slight darker undertone. The co
  ## Image
  <li> Banner photo: https://www.gu.se/en/news/anxiety-effectively-treated-with-exercise </li>
  
+ ## Technology
+ <li> <a href="https://fontawesome.com/v5.15/icons"> FontAwesome </a></li> 
+ <li> <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/">Bootsrap</a></li>
